@@ -1,0 +1,64 @@
+{% extends 'adminnavbar.html' %}
+
+{% block content %}
+ <style>
+    .div3{
+        width: 40%;
+    }
+    .button{
+        text-align: center;
+    }
+    .tb1{
+        padding: 50px;
+    }
+    .btn1{
+        margin-bottom: 30px;
+    }
+    .div2{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+    }
+    .label1{
+        font-family: "Times New Roman";
+    }
+    .heading {
+        font-family: "Times New Roman", Times, serif;
+        font-weight: bold;
+    }
+    .sellist{
+        width: 39vw;
+    }
+ </style>     
+<form action="add_movie" method="post">
+    {% csrf_token %}
+    <div class="d-flex flex-column div2 label1"><br>
+        <h2 align="center" class="heading">Add Movie</h2>
+        <h4 align="center" style="color: green;">{{ Msg }}</h4>
+        <div class="form-floating mb-3 div3">
+            <input type="text" class="form-control label1" id="moviename" placeholder="MovieName" name="txtMovieName">
+            <label for="moviename" class="label1">Movie Name:</label>
+        </div>
+        <div class="form-floating mb-3 div3">    
+            <input type="text" class="form-control label1" id="actorname" placeholder="ActorName" name="txtActorName">
+            <label for="studentcontact" class="label1">Actor Name:</label>
+        </div>
+        <div class="form-floating mb-3 div3">    
+            <input type="text" class="form-control label1" id="actressname" placeholder="ActressName" name="txtActressName">
+            <label for="actressname" class="label1">Actress Name:</label>
+        </div>
+        <div class="form-floating mb-3 div3">
+            <input type="text" class="form-control label" id="directorname" placeholder="DirectorName" name="txtDirectorName">
+            <label for="coursefee" class="label1">Director Name:</label>
+        </div>
+        <div class="form-floating mb-3 div3">
+            <input type="text" class="form-control label" id="moviecost" placeholder="MovieCost" name="txtMovieCost">
+            <label for="moviecost" class="label1">Movie Cost</label>
+        </div>
+        <div class="button d-grid gap-2 col-3 mx-auto btn1">    
+            <input type="submit" class="btn btn-outline-dark label1" name="btnSub" value="Add Movie">
+        </div>
+    </div>    
+</form>
+{% endblock %}
