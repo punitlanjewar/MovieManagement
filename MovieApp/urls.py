@@ -15,6 +15,9 @@ urlpatterns = [
     path('update_movie/<int:id>', views.update_movie_page, name='update_movie'),
     path('delete_movie/<int:id>', views.delete_movie_page, name='delete_movie'),
     path('customer_movie_display', views.display2_movie_page, name='customer_movie_display'),
+    path('book_ticket', views.book_ticket_page, name='book_ticket'),
+    path('booking_status', views.booking_status_page, name='booking_status'),
+    # path('logout', views.logout_fun, name='logout'),
    
 
 ]

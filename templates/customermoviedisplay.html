@@ -22,7 +22,7 @@
                       <p class="card-text">Actress Name: {{ i.actor_name }}</p>
                       <p class="card-text">Director Name: {{ i.director_name }}</p>
                       <p class="card-text">Movie Cost: {{ i.total_cost }}</p>
-                      <a href="#" class="btn btn-primary">Book Ticket</a>
+                      <a href="{% url 'book_ticket' %}" class="btn btn-primary">Book Ticket</a>
                     </div>
                   </div>
             </td>

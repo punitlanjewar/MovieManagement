@@ -31,11 +31,10 @@
         <ul class="navbar-nav">
             <li class="nav-item"><a class="nav-link div1" href="{% url 'customer_home' %}"><span class="material-icons">home</span>&nbsp;Home</a></li>
             <li class="nav-item"><a class="nav-link div1" href="{% url 'customer_movie_display' %}"><span class="material-icons">info</span>&nbsp;Movie Details</a></li>
-            <li class="nav-item"><a class="nav-link div1" href=""><span class="material-icons">event_seat</span>&nbsp;Book Show</a></li>
-            <li class="nav-item"><a class="nav-link div1" href=""><span class="material-icons">event_repeat</span>&nbsp;Booking Status</a></li>
+            <li class="nav-item"><a class="nav-link div1" href="{% url 'booking_status' %}"><span class="material-icons">event_repeat</span>&nbsp;Booking Status</a></li>
         </ul>
         <ul class="navbar-nav">
-          <li class="nav-item"><a class="nav-link div1" href="{% url 'home' %}"><span class="material-icons">logout</span>&nbsp;Logout</a></li>
+          <li class="nav-item"><a class="nav-link div1" href="{% url 'logout' %}"><span class="material-icons">logout</span>&nbsp;Logout</a></li>
         </ul>
   </div>
 </nav>

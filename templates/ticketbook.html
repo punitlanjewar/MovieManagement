@@ -1,0 +1,72 @@
+{% extends 'customernavbar.html' %}
+
+{% block content %}
+ <style>
+    .div3{
+        width: 40%;
+    }
+    .button{
+        text-align: center;
+    }
+    .tb1{
+        padding: 50px;
+    }
+    .btn1{
+        margin-bottom: 30px;
+    }
+    .div2{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+    }
+    .label1{
+        font-family: "Times New Roman";
+    }
+    .heading {
+        font-family: "Times New Roman", Times, serif;
+        font-weight: bold;
+    }
+    .sellist{
+        width: 39vw;
+    }
+ </style>     
+<form action="book_ticket" method="post">
+    {% csrf_token %}
+    <div class="d-flex flex-column div2 label1"><br>
+        <h2 align="center" class="heading">Book Movie Tickets</h2>
+        <h4 align="center" style="color: green;">{{ Msg }}</h4>
+        <div class="form-floating mb-3 div3">
+            <input type="text" class="form-control label1" id="customername" placeholder="CustomerName" name="txtCustomerName">
+            <label for="customername" class="label1">Customer Name:</label>
+        </div>
+        <div class="form-floating mb-3 div3">    
+            <input type="number" class="form-control label1" id="customerage" placeholder="CustomerAge" name="txtCustomerAge">
+            <label for="customerage" class="label1">Customer age:</label>
+        </div>
+        <div class="form-floating mb-3 div3">    
+            <input type="number" class="form-control label1" id="totalpeople" placeholder="TotalPeople" name="txtTotalPeople">
+            <label for="totalprople" class="label1">Total People:</label>
+        </div>
+        <div class="form-floating mb-3 div3">
+            <input type="number" class="form-control label" id="malecount" placeholder="MaleCount" name="txtMaleCount">
+            <label for="malecount" class="label1">Male Count:</label>
+        </div>
+        <div class="form-floating mb-3 div3">
+            <input type="number" class="form-control label" id="femalecount" placeholder="FemaleCount" name="txtFemaleCount">
+            <label for="femalecount" class="label1">Female Count:</label>
+        </div>
+        <div class="form-floating mb-3 div3">
+            <input type="number" class="form-control label" id="childrencount" placeholder="ChildrenCount" name="txtChildrenCount">
+            <label for="childrencount" class="label1">Children Count:</label>
+        </div>
+        <div class="form-floating mb-3 div3">
+            <input type="number" class="form-control label" id="seatquantity" placeholder="SeatQuantity" name="txtSeatQuantity">
+            <label for="seatquantity" class="label1">Seat Quantity:</label>
+        </div>
+        <div class="button d-grid gap-2 col-3 mx-auto btn1">    
+            <input type="submit" class="btn btn-outline-dark label1" name="btnSub" value="Book Ticket">
+        </div>
+    </div>    
+</form>
+{% endblock %}

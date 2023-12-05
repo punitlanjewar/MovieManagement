@@ -1,18 +1,15 @@
 from django.shortcuts import render
-from django.contrib.auth import authenticate
+from django.contrib.auth import authenticate, logout
 from django.shortcuts import redirect
 from django.contrib.auth.models import User
-from MovieApp.models import Movie
+from MovieApp.models import Booking, Movie
+from django.contrib.auth.decorators import login_required
+from django.views.decorators.cache import never_cache
+
 
 # Create your views here.
 def home(request):
     return render(request, 'home.html')
-
-def admin_home_page(request):
-    return render(request, 'adminhome.html')
-
-def customer_home_page(request):
-    return render(request, 'customerhome.html')
 
 def customer_login_page(request):
     if request.method == 'POST':
@@ -28,7 +25,7 @@ def customer_login_page(request):
             return render(request, 'customerlogin.html', {'Msg': 'Username and Password is not matching'})    
     else:
         return render(request, 'customerlogin.html')
-    
+
 def customer_register_page(request):
     if request.method == 'POST':
         user_first_name = request.POST['txtFirstName']
@@ -80,7 +77,20 @@ def admin_register_page(request):
             return redirect('admin_login')
     else:   
         return render(request, 'adminregister.html')    
-    
+
+@login_required
+@never_cache
+def admin_home_page(request):
+    return render(request, 'adminhome.html')
+
+@login_required
+@never_cache
+def customer_home_page(request):
+    return render(request, 'customerhome.html')
+
+
+@login_required
+@never_cache    
 def add_movie_page(request):
     if request.method == 'POST':
         m1 = Movie()
@@ -93,11 +103,15 @@ def add_movie_page(request):
         return render(request, 'addmovie.html', {'Msg': 'Movie Added Successfully'})
     else:
         return render(request, 'addmovie.html')
-    
+
+@login_required
+@never_cache    
 def display_movie_page(request):
     movie_data = Movie.objects.all()
     return render(request, 'displaymovie.html', {'MovieData': movie_data})    
 
+@login_required
+@never_cache
 def update_movie_page(request, id):
     m1 = Movie.objects.get(id=id)
     if request.method == 'POST':
@@ -111,13 +125,42 @@ def update_movie_page(request, id):
         return render(request, 'displaymovie.html', {'Msg': 'Movie Updated Successfully'})
     else:
         return render(request, 'addmovie.html')
-    
+
+@login_required
+@never_cache    
 def delete_movie_page(request, id):
     m1 = Movie.objects.get(id=id)
     m1.delete()
     return redirect('display_movie')   
 
+@login_required
+@never_cache
 def display2_movie_page(request):
     movie_data = Movie.objects.all()
     return render(request, 'customermoviedisplay.html', {'MovieData': movie_data})
-    
+
+@login_required
+@never_cache    
+def book_ticket_page(request):
+    if request.method == 'POST':
+        b1 = Booking()
+        b1.customer_name = request.POST['txtCustomerName']
+        b1.customer_age = int(request.POST['txtCustomerAge'])
+        b1.total_people = int(request.POST['txtTotalPeople'])
+        b1.number_of_male = int(request.POST['txtMaleCount'])
+        b1.number_of_female = int(request.POST['txtFemaleCount'])
+        b1.no_of_children = int(request.POST['txtChildrenCount'])
+        b1.required_seats = int(request.POST['txtSeatQuantity'])
+        b1.save()
+        return render(request, 'ticketbook.html', {'Msg': 'Ticket booked'})
+    return render(request, 'ticketbook.html')    
+
+@login_required
+@never_cache
+def booking_status_page(request):
+    booking_status = Booking.objects.all()
+    return render(request, 'bookingstatus.html', {'BookingStatus': booking_status})
+
+# def logout_fun(request):
+#     logout(request)
+#     return redirect('home')
