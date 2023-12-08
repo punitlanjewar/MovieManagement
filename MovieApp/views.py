@@ -78,19 +78,16 @@ def admin_register_page(request):
     else:   
         return render(request, 'adminregister.html')    
 
-@login_required
-@never_cache
+
 def admin_home_page(request):
     return render(request, 'adminhome.html')
 
-@login_required
-@never_cache
+
 def customer_home_page(request):
     return render(request, 'customerhome.html')
 
 
-@login_required
-@never_cache    
+    
 def add_movie_page(request):
     if request.method == 'POST':
         m1 = Movie()
@@ -103,15 +100,12 @@ def add_movie_page(request):
         return render(request, 'addmovie.html', {'Msg': 'Movie Added Successfully'})
     else:
         return render(request, 'addmovie.html')
-
-@login_required
-@never_cache    
+    
 def display_movie_page(request):
     movie_data = Movie.objects.all()
     return render(request, 'displaymovie.html', {'MovieData': movie_data})    
 
-@login_required
-@never_cache
+
 def update_movie_page(request, id):
     m1 = Movie.objects.get(id=id)
     if request.method == 'POST':
@@ -126,21 +120,18 @@ def update_movie_page(request, id):
     else:
         return render(request, 'addmovie.html')
 
-@login_required
-@never_cache    
+
 def delete_movie_page(request, id):
     m1 = Movie.objects.get(id=id)
     m1.delete()
     return redirect('display_movie')   
 
-@login_required
-@never_cache
+
 def display2_movie_page(request):
     movie_data = Movie.objects.all()
     return render(request, 'customermoviedisplay.html', {'MovieData': movie_data})
 
-@login_required
-@never_cache    
+    
 def book_ticket_page(request):
     if request.method == 'POST':
         b1 = Booking()
@@ -155,12 +146,11 @@ def book_ticket_page(request):
         return render(request, 'ticketbook.html', {'Msg': 'Ticket booked'})
     return render(request, 'ticketbook.html')    
 
-@login_required
-@never_cache
+
 def booking_status_page(request):
     booking_status = Booking.objects.all()
     return render(request, 'bookingstatus.html', {'BookingStatus': booking_status})
 
-# def logout_fun(request):
-#     logout(request)
-#     return redirect('home')
+def logout_page(request):
+    logout(request)
+    return redirect('home')
