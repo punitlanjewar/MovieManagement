@@ -1,4 +1,4 @@
-{% extends 'customernavbar.html' %}
+{% extends 'adminnavbar.html' %}
 
 {% block content %}
 <style>
@@ -24,7 +24,7 @@
             <th>Number of Seats</th>
             <th>Booking Status</th>
         </tr>
-        {% for i in BookingStatus %}
+        {% for i in BookingDetails %}
             <tr>
                 <td>{{ i.id }}</td>
                 <td>{{ i.customer_name }}</td>

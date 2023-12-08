@@ -17,6 +17,7 @@ urlpatterns = [
     path('customer_movie_display', views.display2_movie_page, name='customer_movie_display'),
     path('book_ticket', views.book_ticket_page, name='book_ticket'),
     path('booking_status', views.booking_status_page, name='booking_status'),
+    path('booking_details', views.booking_details_page, name='booking_details'),
     path('logout', views.logout_page, name='logout'),
    
 

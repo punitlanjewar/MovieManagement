@@ -86,8 +86,8 @@ def admin_home_page(request):
 def customer_home_page(request):
     return render(request, 'customerhome.html')
 
-
     
+
 def add_movie_page(request):
     if request.method == 'POST':
         m1 = Movie()
@@ -128,8 +128,8 @@ def delete_movie_page(request, id):
 
 
 def display2_movie_page(request):
-    movie_data = Movie.objects.all()
-    return render(request, 'customermoviedisplay.html', {'MovieData': movie_data})
+    movie_data2 = Movie.objects.all()
+    return render(request, 'customermoviedisplay.html', {'MovieData2': movie_data2})
 
     
 def book_ticket_page(request):
@@ -146,6 +146,9 @@ def book_ticket_page(request):
         return render(request, 'ticketbook.html', {'Msg': 'Ticket booked'})
     return render(request, 'ticketbook.html')    
 
+def booking_details_page(request):
+    booking_details = Booking.objects.all()
+    return render(request, 'bookingdetails.html', {'BookingDetails': booking_details})
 
 def booking_status_page(request):
     booking_status = Booking.objects.all()
